@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStarPathfinding", "AStarPathfinding\AStarPathfinding.csproj", "{114BA0FF-DAB8-48AB-8091-F40AB430BCE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{114BA0FF-DAB8-48AB-8091-F40AB430BCE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114BA0FF-DAB8-48AB-8091-F40AB430BCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114BA0FF-DAB8-48AB-8091-F40AB430BCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114BA0FF-DAB8-48AB-8091-F40AB430BCE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AED7276-0365-49DE-A750-355FC62EAD13}
+	EndGlobalSection
+EndGlobal
