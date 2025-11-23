@@ -14,6 +14,18 @@ namespace AStarPathfinding
             GameManager manager = new();
             manager.Initialise();
 
+            TraversalRules.Initialise();
+
+            // print out all of TraversalRules.cardinal to console
+            foreach (var rule in TraversalRules.cardinal)
+            {
+                Console.WriteLine($"DV: ({rule.dv.x}, {rule.dv.y}), Cost: {rule.cost}, Requirements: {rule.requirements.Count}");
+                foreach (var req in rule.requirements)
+                {
+                    Console.WriteLine($"\tRelative Position: ({req.relativePosition.x}, {req.relativePosition.y}), Must Be Empty: {req.mustBeEmpty}");
+                }
+            }
+
             while (!Raylib.WindowShouldClose())
             {
                 manager.Update();

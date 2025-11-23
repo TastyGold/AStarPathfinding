@@ -1,5 +1,13 @@
 ﻿internal static class TerrainGenerator
 {
+    public static void RunCaveAutomataSteps(Board board, int steps)
+    {
+        for (int i = 0; i < steps; i++)
+        {
+            RunCaveAutomataStep(board);
+        }
+    }
+
     // https://code.tutsplus.com/generate-random-cave-levels-using-cellular-automata--gamedev-9664t
     public static void RunCaveAutomataStep(Board board)
     {

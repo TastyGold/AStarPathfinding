@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using AStarPathfinding;
+using Raylib_cs;
 
 internal class BoardManager(int width, int height)
 {
@@ -16,6 +17,8 @@ internal class BoardManager(int width, int height)
         }
     }
 
+    public Board GetBoard() => board;
+
     public void SetRandomTilePresence(double population)
     {
         for (int y = 0; y < board.height; y++)
@@ -27,6 +30,26 @@ internal class BoardManager(int width, int height)
         }
     }
 
+    public void SetSmoothRandomTilePresence(double populationA, double populationB, int left, int right)
+    {
+        for (int y = 0; y < board.height; y++)
+        {
+            for (int x = 0; x < board.width; x++)
+            {
+                double t = (double)(x - left) / (right - left);
+                t = Math.Clamp(t, 0.0, 1.0);
+                double population = populationA * (1.0 - t) + populationB * t;
+                board.SetTile(x, y, random.NextDouble() < population ? Tile.present : Tile.empty);
+            }
+        }
+    }
+
+    public void GenerateCavesTerrain(double initialPopulation, int automataSteps)
+    {
+        SetRandomTilePresence(initialPopulation);
+        TerrainGenerator.RunCaveAutomataSteps(board, automataSteps);
+    }
+
     public void Update()
     {
         if (Raylib.IsKeyPressed(KeyboardKey.G))
@@ -35,7 +58,7 @@ internal class BoardManager(int width, int height)
         }
         if (Raylib.IsKeyPressed(KeyboardKey.H) || Raylib.IsKeyPressed(KeyboardKey.K))
         {
-            for (int i = 0; i < 5; i++) TerrainGenerator.RunCaveAutomataStep(board);
+            TerrainGenerator.RunCaveAutomataSteps(board, 5);
         }
     }
 
