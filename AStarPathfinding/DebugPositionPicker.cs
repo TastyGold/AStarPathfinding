@@ -17,11 +17,11 @@ internal class DebugPositionPicker
     {
         Vector2 mousePos = Raylib.GetMousePosition();
         VecInt2 boardPos = new((int)((mousePos.X - px) / scale), (int)((mousePos.Y - py) / scale));
-        if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+        if (Raylib.IsMouseButtonDown(MouseButton.Left))
         {
             start = boardPos;
         }
-        if (Raylib.IsMouseButtonPressed(MouseButton.Right))
+        if (Raylib.IsMouseButtonDown(MouseButton.Right))
         {
             end = boardPos;
         }
@@ -31,6 +31,7 @@ internal class DebugPositionPicker
 
     public VecInt2 GetStart() => start;
     public VecInt2 GetEnd() => end;
+    public VecInt2 GetMousePosition() => lastMousePosition;
 
     public void Draw(int px, int py, int scale)
     {

@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using AStarPathfinding;
+using Raylib_cs;
 
 internal class GameManager
 {
@@ -43,14 +44,25 @@ internal class GameManager
         board.Update();
         debugPositionPicker.Update(px, py, scale);
         pathfinder.Update(board.GetBoard(), debugPositionPicker.GetStart(), debugPositionPicker.GetEnd());
+
+        // modify tiles with N/M keys
+        VecInt2 mousePosition = debugPositionPicker.GetMousePosition();
+        if (Raylib.IsKeyDown(KeyboardKey.N))
+        {
+            board.GetBoard().SetTile(mousePosition.x, mousePosition.y, Tile.empty);
+        }
+        if (Raylib.IsKeyDown(KeyboardKey.M))
+        {
+            board.GetBoard().SetTile(mousePosition.x, mousePosition.y, Tile.present);
+        }
     }
 
     public void Draw()
     {
         board.DrawBoard(px, py, scale);
         Raylib.DrawText($"Population = {population}", 10, 10, 10, Color.White);
-        debugPositionPicker.Draw(px, py, scale);
         pathfinder.Draw(px, py, scale);
+        debugPositionPicker.Draw(px, py, scale);
         Raylib.DrawFPS(10, 875);
     }
 }
